@@ -1,0 +1,18 @@
+name = "luckylucky"
+main = "server/worker.js"
+compatibility_date = "2026-06-01"
+
+# public/ 정적 사이트를 같은 Worker 가 서빙, /ws 만 서버 코드로
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/ws", "/"]   # "/" 는 방 초대 링크 미리보기 제목 바꾸기
+
+# 방: 모니터 하나 + 폰 여러 대를 잇는 중계(방 번호마다 하나)
+[[durable_objects.bindings]]
+name = "ROOM"
+class_name = "Room"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Room"]

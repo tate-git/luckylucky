@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14172b">
+<title>Lucky Lucky</title>
+<meta name="description" content="점심 5분 두뇌 서바이벌 · 각자 폰·PC로 방에 모여 함께 풀기">
+<!-- 링크 미리보기(카톡·슬랙·문자) · 방 초대 링크(?r=)는 서버가 제목을 방 번호로 바꿈 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lucky Lucky">
+<meta property="og:title" content="🍀 Lucky Lucky">
+<meta property="og:description" content="점심 5분 두뇌 서바이벌 · 게임 21종 랜덤 · 각자 폰·PC로 최대 50명">
+<meta property="og:image" content="https://luckylucky.lunchtime.workers.dev/og.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="🍀 Lucky Lucky">
+<meta name="twitter:description" content="점심 5분 두뇌 서바이벌 · 게임 21종 랜덤 · 각자 폰·PC로 최대 50명">
+<meta name="twitter:image" content="https://luckylucky.lunchtime.workers.dev/og.png?v=2">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍀</text></svg>">
+<meta name="apple-mobile-web-app-title" content="Lucky Lucky">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<link rel="stylesheet" href="css/app.css">
+<script src="vendor/qrcode.js"></script>
+</head>
+<body data-view="home">
+<section id="home" class="card">
+  <button id="langBtn" type="button" class="btn mini lang">🌐 English</button>
+  <h1>🍀 Lucky Lucky</h1>
+  <p class="sub" data-t="sub">점심 5분 두뇌 서바이벌</p>
+  <p class="desc" data-t="desc">게임 21종 중 라운드마다 랜덤 · 마지막 라운드는 코인 베팅!<br>각자 폰이나 PC로 같은 방에 들어와 함께 풀어요<br><b class="cap">👥 최대 50명까지 함께할 수 있어요</b></p>
+  <p class="invite-msg" data-t="invite">🔢 방 <b id="invCode"></b>에 초대받았어요<br><small>이름을 적고 입장하세요</small></p>
+  <label class="field"><span data-t="name">이름</span><input id="nick" maxlength="10" autocomplete="nickname" placeholder="예) 두뇌왕"></label>
+  <button id="enterBtn" type="button" class="btn big invite-only" data-t="enter">▶ 입장하기</button>
+  <button id="notInvite" type="button" class="btn mini invite-only" data-t="other">다른 방 · 방 만들기</button>
+  <div class="pickrow"><span data-t="rounds">라운드</span><div class="seg" id="seg"><button type="button" data-v="1">1R</button><button type="button" data-v="2">2R</button><button type="button" data-v="3" class="on">3R</button></div></div>
+  <p class="note" id="segNote">약 5분</p>
+  <button id="create" type="button" class="btn big" data-t="create">🏠 방 만들기</button>
+  <p class="or"><span data-t="or">또는 방에 참가</span></p>
+  <div class="joinrow">
+    <button id="scan" type="button" class="btn" data-t="scan">📷 QR 참가</button>
+    <input id="code" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="코드 4자리" aria-label="코드 참가 · 방 코드 4자리">
+  </div>
+  <p id="err" class="err" role="alert"></p>
+</section>
+
+<div id="scanner" hidden>
+  <video id="scanVideo" playsinline muted></video>
+  <div class="frame"></div>
+  <p data-t="scanHint">방 만든 사람 화면의 QR 을 네모 안에 비춰 주세요</p>
+  <button id="scanClose" type="button" class="btn" data-t="close">닫기</button>
+</div>
+
+<section id="game">
+  <header>
+    <span id="room"></span>
+    <button id="leave" type="button" class="btn mini" data-t="leave">나가기</button>
+    <span class="coin">🪙 <b id="coins">10</b></span>
+  </header>
+  <div id="rlabel"></div>
+  <div id="timer"><i id="tbar"></i><b id="tsec"></b></div>
+  <main id="stage"></main>
+  <ul id="plist"></ul>
+</section>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

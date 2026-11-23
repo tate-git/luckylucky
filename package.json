@@ -1,0 +1,13 @@
+{
+  "name": "luckylucky",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --ip 127.0.0.1 --port 8793",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "jsqr": "^1.4.0",
+    "wrangler": "^4.156.2"
+  }
+}
